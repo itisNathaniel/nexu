@@ -4,6 +4,7 @@
 Things to do: 
 
 Functions
+- [X] Plan UI
 - [ ] Create authentication system
 - [ ] Design backend
 - [ ] Link to MYSQL database for family member entries and their relationships
