@@ -24,4 +24,4 @@ Add pretty things then to improve UX and function:
 - [ ] Export to GEDCOM
 - [ ] Look back at the project and think of improvements
 
-Currently licensed under the MIT license, although it may change later in developement but will remain open
+Currently licensed under the MIT license, although it may change later in developement but will remain open, it can be seen in legal.md
