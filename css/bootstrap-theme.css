@@ -19,10 +19,19 @@
     padding-left: 150px;
     padding-right: 150px;
 }
+
+#gedcomleft, #newaccountright {
+    display:inline-block;
+    width: 40% !important;
+    min-width: 300px;
+    padding-left: 5%;
+    padding-top: 2%
+}
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
 }
 body {
     margin: 0;
@@ -43,23 +52,32 @@ summary {
     display: block
 }
 
+footer {
+    padding-top: 50px;
+}
 .bigfooter {
     color:#ffffff;
 }
 .footer {
-    margin-top: 70px !important;
-    padding:30px  !important;
+    margin-top: 10px;
+    height:auto;
+    padding:50px  !important;
     color: #999999 !important;
     text-align: right !important;
+<<<<<<< HEAD
     bottom: 0px;
     left:0px;
     right: 0px;
     position: absolute;
+=======
+    bottom: 0px !important;
+    position: relative;
+    width:100%;
+>>>>>>> origin/master
 }
 
 .mainbody {
-    padding-bottom: 100px !important;
-    clear:both;
+    height: auto;
 }
 
 .footermini {

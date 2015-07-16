@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>Get Started</title>
 <!-- CSS/JS -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
 <script src="/js/bootstrap.min.js"></script>
@@ -27,42 +28,32 @@
 </nav>
 <div class="container">
 	<!-- Breadcrumbs -->
-		<ul class="breadcrumb">
-		  <li><a href="#">Home</a></li>
-		  <li class="active">Log in</li>
-		</ul>
+		<!-- No breadcrumbs here as the user doesn't need them -->
 	<!-- End Breadcrumbs -->
-<div class="alert alert-danger">
-  <strong>Security:</strong> Please log in to access this page
-</div>
 
 	<!-- Body -->
 	<div class="mainbody">
-		<form class="form-horizontal">
-		  <fieldset>
-		    <h1>Log in</h1><br/>
-		        <div class="form-login">
-			    <div class="form-group">
-			      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-			      <div class="col-lg-10">
-			        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-			      </div>
-			    </div>
-			    <div class="form-group">
-			      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-			      <div class="col-lg-10">
-			        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-			      </div>
-			    </div>
-			    <div class="form-group">
-			      <div class="col-lg-10 col-lg-offset-2">
-			        <button type="submit" class="btn btn-primary">Submit</button>
-			      </div>
-			    </div>
-			  </fieldset>
-			</div>
-		</form>
+	<h1>Hello there...<h4><b>welcome to nexu;</b> get started by importing an existing family tree or starting afresh</h4></h1>
+		<div id="gedcomleft">
+			<h3>Import from GEDCOM</h3>
+			<h6>You can import a tree from a online sites like Ancestry.com or alternative software</h6>
+				<form>
+				<label class="control-label">Upload GEDCOM zip</label>
+				<input type="file"><br><input class="btn btn-info" value="Get Started" type="submit">
+				</form>
+		</div>
+		<div id="newaccountright">
+			<h3>Start new</h2>
+			<h6>Start from scratch; you <b>will not</b> be able to import later</h6>
+				<form>
+					<label class="control-label" for="inputsmall">Tree Name</label>
+	  				<input class="form-control input-sm" id="inputsmall" type="text" placeholder="Tree Name" >
+					<br><input class="btn btn-warning" value="Get Started" type="submit">
+				</form>
+		</div>
+
 	</div>
+</div>
 
 <br/><footer></div>
 <div class="container-fluid navbar-default footer"><div class="container">
