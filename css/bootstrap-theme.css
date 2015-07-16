@@ -47,17 +47,14 @@ summary {
     color:#ffffff;
 }
 .footer {
-    margin-top: 70px !important;
-    padding:30px  !important;
+    margin-top: 70px;
+    padding:40px  !important;
     color: #999999 !important;
     text-align: right !important;
-    bottom: 0px !important;
+    bottom: 0px;
+    left:0px;
+    right: 0px;
     position: absolute;
-}
-
-.mainbody {
-    padding-bottom: 100px !important;
-    clear:both;
 }
 
 .footermini {
