@@ -51,7 +51,9 @@ summary {
     padding:30px  !important;
     color: #999999 !important;
     text-align: right !important;
-    bottom: 0px !important;
+    bottom: 0px;
+    left:0px;
+    right: 0px;
     position: absolute;
 }
 
