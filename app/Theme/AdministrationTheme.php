@@ -231,7 +231,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 			'<span class="icon-bar"></span>' .
 			'<span class="icon-bar"></span>' .
 			'</button>' .
-			'<a class="navbar-brand" href="admin.php">' . I18N::translate('Control panel') . '</a>' .
+			'<a class="navbar-brand" href="admin.php">' . I18N::translate('administration menu') . '</a>' .
 			'</div>' .
 			'<div class="collapse navbar-collapse" id="primary-navbar-collapse">' .
 			'<ul class="nav navbar-nav">' .

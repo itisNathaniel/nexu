@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 namespace Fisharebest\Webtrees;
 
 use PDO;
@@ -86,6 +87,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 		</style>
 	</head>
 	<body>
+	
 		<h1><?php echo I18N::translate('This website is temporarily unavailable'); ?></h1>
 		<div class="content">
 			<p>
