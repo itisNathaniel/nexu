@@ -12,7 +12,10 @@ Licensed under the GNU Free Documentation License
 
 <b>To install on Mac OS X</b>
 - Requires MySQL and PHP - MAMP is probably easiest
- - On MAMP when installed double click it, open 'htdocs' and paste 'nexu' there
- - Do not add bits from your database into the version that you commit as it will end badly
+ - Create a symbolic link from where your GitHub folder is for Nexu to MAMP or your webserver; for example:
+     - ln -s /Users/johndoe/Documents/Repositories/nexu /Applications/MAMP/htdocs/nexu
+          - (ln -s) means a Symbolic link 
+          - (/Users/johndoe/Documents/Repositories/nexu) is where your Nexu repository is cloned to 
+          - (/Applications/MAMP/htdocs/nexu) is where you want to link your repository to, (i.e: your MAMP web docs folder)
  - Open MAMP and press 'Open Start Page', replace '/MAMP/' with '/nexu'
  - continue through setup, open MAMP start page info for database credentials
