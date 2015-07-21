@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -96,9 +96,9 @@ $XREF_LINKS = array(
 	'WIFE'          => 'INDI',
 	'CHIL'          => 'INDI',
 	'ASSO'          => 'INDI',
-	'_ASSO'         => 'INDI', // A webtrees extension
+	'_ASSO'         => 'INDI', // A nexu extension
 	'ALIA'          => 'INDI',
-	'AUTH'          => 'INDI', // A webtrees extension
+	'AUTH'          => 'INDI', // A nexu extension
 	'ANCI'          => 'SUBM',
 	'DESI'          => 'SUBM',
 	'_WT_OBJE_SORT' => 'OBJE',
@@ -121,7 +121,7 @@ $errors = false;
 
 echo '<h1>', $controller->getPageTitle(), '</h1>';
 echo '<fieldset><legend>', I18N::translate('Types of error'), '</legend>';
-echo '<p class="ui-state-error">', I18N::translate('This may cause a problem for webtrees.'), '</p>';
+echo '<p class="ui-state-error">', I18N::translate('This may cause a problem for nexu.'), '</p>';
 echo '<p class="ui-state-highlight">', I18N::translate('This may cause a problem for other applications.'), '</p>';
 echo '<p class="warning-bad-data">', I18N::translate('This may be a mistake in your data.'), '</p>';
 echo '</fieldset>';

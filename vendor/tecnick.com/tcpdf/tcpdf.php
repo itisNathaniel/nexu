@@ -5237,7 +5237,7 @@ class TCPDF {
 						// po pla, for far, for fan
 						$longtail = array(0x0e1b, 0x0e1d, 0x0e1f);
 						// do chada, to patak
-						$lowtail = array(0x0e0e, 0x0e0f);
+						$lonexuail = array(0x0e0e, 0x0e0f);
 						// mai hun arkad, sara i, sara ii, sara ue, sara uee
 						$upvowel = array(0x0e31, 0x0e34, 0x0e35, 0x0e36, 0x0e37);
 						// mai ek, mai tho, mai tri, mai chattawa, karan
@@ -5300,7 +5300,7 @@ class TCPDF {
 										// normal character
 										$output[] = $ch0;
 									}
-								} elseif (in_array($ch1, $lowtail) AND in_array($ch0, $lowvowel)) {
+								} elseif (in_array($ch1, $lonexuail) AND in_array($ch0, $lowvowel)) {
 									// lower vowel
 									$output[] = $this->replaceChar($ch0, (0xf718 + $ch0 - 0x0e38));
 								} elseif (($ch0 == 0x0e0d) AND in_array($chn, $lowvowel)) {
@@ -18010,9 +18010,9 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 					if (($dom[$key]['value'] == 'table') AND isset($dom[$key]['cols']) AND ($dom[$key]['cols'] > 0)) {
 						// available page width
 						if ($this->rtl) {
-							$wtmp = $this->x - $this->lMargin;
+							$nexump = $this->x - $this->lMargin;
 						} else {
-							$wtmp = $this->w - $this->rMargin - $this->x;
+							$nexump = $this->w - $this->rMargin - $this->x;
 						}
 						// get cell spacing
 						if (isset($dom[$key]['attribute']['cellspacing'])) {
@@ -18025,9 +18025,9 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 						}
 						// table width
 						if (isset($dom[$key]['width'])) {
-							$table_width = $this->getHTMLUnitToUnits($dom[$key]['width'], $wtmp, 'px');
+							$table_width = $this->getHTMLUnitToUnits($dom[$key]['width'], $nexump, 'px');
 						} else {
-							$table_width = $wtmp;
+							$table_width = $nexump;
 						}
 						$table_width -= (2 * $cellspacing['H']);
 						if (!$this->inthead) {
@@ -18787,14 +18787,14 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 				$this->addHTMLVertSpace($hbz, max($hb, ($hrHeight / 2)), $cell, $firsttag);
 				$x = $this->GetX();
 				$y = $this->GetY();
-				$wtmp = $this->w - $this->lMargin - $this->rMargin;
+				$nexump = $this->w - $this->lMargin - $this->rMargin;
 				if ($cell) {
-					$wtmp -= ($this->cell_padding['L'] + $this->cell_padding['R']);
+					$nexump -= ($this->cell_padding['L'] + $this->cell_padding['R']);
 				}
 				if ((isset($tag['width'])) AND ($tag['width'] != '')) {
-					$hrWidth = $this->getHTMLUnitToUnits($tag['width'], $wtmp, 'px');
+					$hrWidth = $this->getHTMLUnitToUnits($tag['width'], $nexump, 'px');
 				} else {
-					$hrWidth = $wtmp;
+					$hrWidth = $nexump;
 				}
 				$prevlinewidth = $this->GetLineWidth();
 				$this->SetLineWidth($hrHeight);
@@ -23861,8 +23861,8 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 							}
 							$hr = $wr;
 						}
-						$newtm = array($wr, 0, 0, $hr, (($wr * ($ax - $vx)) - $svgX), (($hr * ($ay - $vy)) - $svgY));
-						$tm = TCPDF_STATIC::getTransformationMatrixProduct($tm, $newtm);
+						$nenexum = array($wr, 0, 0, $hr, (($wr * ($ax - $vx)) - $svgX), (($hr * ($ay - $vy)) - $svgY));
+						$tm = TCPDF_STATIC::getTransformationMatrixProduct($tm, $nenexum);
 						$this->SVGTransform($tm);
 					}
 				}

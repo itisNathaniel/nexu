@@ -1,5 +1,5 @@
-# webtrees: online genealogy
-# Copyright (C) 2015 webtrees development team
+# nexu: online genealogy
+# Copyright (C) 2015 nexu development team
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -13,9 +13,9 @@
 #
 # This file needs to be placed in the domain root folder,
 # such as "www.example.com/robots.txt".  It will not work in a
-# subfolder, such as "www.example.com/webtrees/robots.txt"
+# subfolder, such as "www.example.com/nexu/robots.txt"
 # If you need to move it, then remember to adjust the paths as well.
-# e.g. "Disallow: /login.php" becomes "Disallow: /webtrees/login.php".
+# e.g. "Disallow: /login.php" becomes "Disallow: /nexu/login.php".
 
 # These URLs are expensive to generate or duplicate existing content:
 User-Agent: *

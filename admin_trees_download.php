@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -150,7 +150,7 @@ $controller->pageHeader();
 				<?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
 			</label>
 			<p class="small muted">
-				<?php echo I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.'); ?>
+				<?php echo I18N::translate('nexu uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.'); ?>
 			</p>
 
 			<!-- GEDCOM_MEDIA_PATH -->

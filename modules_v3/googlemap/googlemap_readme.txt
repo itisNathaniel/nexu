@@ -1,4 +1,4 @@
-﻿README file for the Google Maps™ module for webtrees
+﻿README file for the Google Maps™ module for nexu
 
 The files in this archive should be extracted into your modules folder.
 
@@ -26,14 +26,14 @@ The correct way to do this is for a PLAC record:
 The MAP, LONG and LATI lines should be added directly after the PLAC line.
 In the ‘edit’ function pop-up window, there is a ‘+’ (plus sign) under ‘Place’
 where you can select a country, state, county, and city that exists in your
-webtrees ‘place’ file. This can help avoid duplications by various spellings
-or versions of the same place. The webtrees configuration allows for ‘expanded’
+nexu ‘place’ file. This can help avoid duplications by various spellings
+or versions of the same place. The nexu configuration allows for ‘expanded’
 editing if that option is selected.
 
 It is also possible to define a MAP record within a ADDR record, even though
 this is not according to the standard (these records are created by Legacy).
 
-Add a place using webtrees Google Maps™ module (recommended method):
+Add a place using nexu Google Maps™ module (recommended method):
 
 Forenote: the Google Map module is designed to work with locations in tree-like
 fashion. If we were to consider a suburb of London, the tree would take the
@@ -41,7 +41,7 @@ order 'England, London, Hackney'. This is not how we enter place names in our
 family data, but it is how we manage the Google Map module. This will give
 access to useful place lookup features as we build up map information. It will
 help you find groups of people from the same locale. And it conforms to the
-GEDCOM specification, a feature of webtrees. 
+GEDCOM specification, a feature of nexu. 
 
 And, BEFORE you start with any mapping endeavours, review your data. Make sure
 spelling is consistent, there are no 'almost' duplicates, places are in their
@@ -53,7 +53,7 @@ information. Existing places can be imported and location information can be
 added using graphic tools (zoom/click on map) or specific location data. 
 
 The location information is held outside the GEDCOM (and can be shared between
-family trees in webtrees) and location data is entered only once for each place.
+family trees in nexu) and location data is entered only once for each place.
 Backup of location data is available by export of each new place database table
 to a text file (separated with ";"). Bulk additions can be performed by text
 file import (with reservations for specific place structure and spelling). 
@@ -66,4 +66,4 @@ whatever is appropriate for your locale.)
 To make the flags work make sure that ./places/flags folder exists.
 
 More information:
-http://wiki.webtrees.net/en/Google_Map_module
+http://wiki.nexu.net/en/Google_Map_module

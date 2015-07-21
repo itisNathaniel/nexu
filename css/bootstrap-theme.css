@@ -87,6 +87,11 @@ footer {
 .footermicro {
     color: #474747;
 }
+
+/* SETUP WIZARD */
+.dbsetup input{
+    padding: 10px;
+}
 audio,
 canvas,
 progress,
@@ -2789,6 +2794,16 @@ input[type="search"] {
 }
 .form-login input {
     width: 90% !important;
+} 
+
+.form-signup {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form-signup input {
+    width: 90% !important;
+    margin-left: 0;
 } 
 
 .radio,

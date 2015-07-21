@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@ $to_user = User::findByIdentifier($to);
 $controller = new SimpleController;
 $controller
 	->restrictAccess($to_user || Auth::isAdmin() && ($to === 'all' || $to === 'last_6mo' || $to === 'never_logged'))
-	->setPageTitle(I18N::translate('webtrees message'));
+	->setPageTitle(I18N::translate('nexu message'));
 
 $errors = '';
 
@@ -216,7 +216,7 @@ function addMessage($message) {
 	$sender    = User::findByIdentifier($message['from']);
 	$recipient = User::findByIdentifier($message['to']);
 
-	// Sender may not be a webtrees user
+	// Sender may not be a nexu user
 	if ($sender) {
 		$sender_email     = $sender->getEmail();
 		$sender_real_name = $sender->getRealName();
@@ -242,10 +242,10 @@ function addMessage($message) {
 
 		if ($sender) {
 			// Message from a logged-in user
-			$copy_email = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . Mail::EOL . $copy_email;
+			$copy_email = I18N::translate('You sent the following message to a nexu user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . Mail::EOL . $copy_email;
 		} else {
 			// Message from a visitor
-			$copy_email = I18N::translate('You sent the following message to a webtrees administrator:') . Mail::EOL . Mail::EOL . Mail::EOL . $copy_email;
+			$copy_email = I18N::translate('You sent the following message to a nexu administrator:') . Mail::EOL . Mail::EOL . Mail::EOL . $copy_email;
 		}
 
 		$success = $success && Mail::send(
@@ -258,7 +258,7 @@ function addMessage($message) {
 				Site::getPreference('SMTP_FROM_NAME'),
 				$WT_TREE->getPreference('title'),
 				// Message body
-				I18N::translate('webtrees message') . ' - ' . $message['subject'],
+				I18N::translate('nexu message') . ' - ' . $message['subject'],
 				$copy_email
 			);
 	}
@@ -299,10 +299,10 @@ function addMessage($message) {
 	}
 	if ($message['method'] !== 'messaging') {
 		if ($sender) {
-			$original_email = I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email = I18N::translate('The following message has been sent to your nexu user account from ');
 			$original_email .= $sender->getRealNameHtml();
 		} else {
-			$original_email = I18N::translate('The following message has been sent to your webtrees user account from ');
+			$original_email = I18N::translate('The following message has been sent to your nexu user account from ');
 			if (!empty($message['from_name'])) {
 				$original_email .= $message['from_name'];
 			} else {
@@ -321,7 +321,7 @@ function addMessage($message) {
 				$sender_email,
 				$sender_real_name,
 				// Message body
-				I18N::translate('webtrees message') . ' - ' . $message['subject'],
+				I18N::translate('nexu message') . ' - ' . $message['subject'],
 				$original_email
 			);
 	}

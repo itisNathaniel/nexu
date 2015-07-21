@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -295,7 +295,7 @@ case 'register':
 			$mail1_body =
 				I18N::translate('Hello administrator…') . Mail::EOL . Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml()) . Mail::EOL . Mail::EOL .
+				I18N::translate('A prospective user has registered with nexu at %s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml()) . Mail::EOL . Mail::EOL .
 				I18N::translate('Username') . ' ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
 				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .

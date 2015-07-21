@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ define('WT_SCRIPT_NAME', 'admin.php');
 
 require './includes/session.php';
 
-// This is a list of old files and directories, from earlier versions of webtrees, that can be deleted.
+// This is a list of old files and directories, from earlier versions of nexu, that can be deleted.
 // It was generated with the help of a command like this:
 // git diff 1.6.0..master --name-status | grep ^D
 $old_files = array(
@@ -74,9 +74,9 @@ $old_files = array(
 	WT_ROOT . 'themes/fab/netscape.css',
 	WT_ROOT . 'themes/minimal/mozilla.css',
 	WT_ROOT . 'themes/minimal/netscape.css',
-	WT_ROOT . 'themes/webtrees/mozilla.css',
-	WT_ROOT . 'themes/webtrees/netscape.css',
-	WT_ROOT . 'themes/webtrees/style_rtl.css',
+	WT_ROOT . 'themes/nexu/mozilla.css',
+	WT_ROOT . 'themes/nexu/netscape.css',
+	WT_ROOT . 'themes/nexu/style_rtl.css',
 	WT_ROOT . 'themes/xenea/mozilla.css',
 	WT_ROOT . 'themes/xenea/netscape.css',
 	WT_ROOT . 'uploadmedia.php',
@@ -91,7 +91,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/jquery',
 	WT_ROOT . 'themes/fab/jquery',
 	WT_ROOT . 'themes/minimal/jquery',
-	WT_ROOT . 'themes/webtrees/jquery',
+	WT_ROOT . 'themes/nexu/jquery',
 	WT_ROOT . 'themes/xenea/jquery',
 	// Removed in 1.2.1
 	// Removed in 1.2.2
@@ -138,7 +138,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/modules.css',
 	WT_ROOT . 'themes/fab/modules.css',
 	WT_ROOT . 'themes/minimal/modules.css',
-	WT_ROOT . 'themes/webtrees/modules.css',
+	WT_ROOT . 'themes/nexu/modules.css',
 	WT_ROOT . 'themes/xenea/modules.css',
 	// Removed in 1.2.5
 	WT_ROOT . 'includes/media_reorder_count.php',
@@ -227,7 +227,7 @@ $old_files = array(
 	WT_ROOT . 'modules_v3/lightbox/music',
 	WT_ROOT . 'modules_v3/lightbox/pic',
 	WT_ROOT . 'themes/_administration/jquery',
-	WT_ROOT . 'themes/webtrees/chrome.css',
+	WT_ROOT . 'themes/nexu/chrome.css',
 	// Removed in 1.4.1
 	WT_ROOT . 'modules_v3/lightbox/images/image_edit.png',
 	WT_ROOT . 'modules_v3/lightbox/images/image_view.png',
@@ -239,7 +239,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/jquery-ui-1.10.0',
 	WT_ROOT . 'themes/fab/jquery-ui-1.10.0',
 	WT_ROOT . 'themes/minimal/jquery-ui-1.10.0',
-	WT_ROOT . 'themes/webtrees/jquery-ui-1.10.0',
+	WT_ROOT . 'themes/nexu/jquery-ui-1.10.0',
 	WT_ROOT . 'themes/xenea/jquery-ui-1.10.0',
 	// Removed in 1.5.0
 	WT_ROOT . 'includes/media_reorder.php',
@@ -272,10 +272,10 @@ $old_files = array(
 	WT_ROOT . 'themes/minimal/images',
 	WT_ROOT . 'themes/minimal/msie.css',
 	WT_ROOT . 'themes/minimal/style.css',
-	WT_ROOT . 'themes/webtrees/favicon.png',
-	WT_ROOT . 'themes/webtrees/images',
-	WT_ROOT . 'themes/webtrees/msie.css',
-	WT_ROOT . 'themes/webtrees/style.css',
+	WT_ROOT . 'themes/nexu/favicon.png',
+	WT_ROOT . 'themes/nexu/images',
+	WT_ROOT . 'themes/nexu/msie.css',
+	WT_ROOT . 'themes/nexu/style.css',
 	WT_ROOT . 'themes/xenea/favicon.png',
 	WT_ROOT . 'themes/xenea/images',
 	WT_ROOT . 'themes/xenea/msie.css',
@@ -286,7 +286,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/css-1.5.0',
 	WT_ROOT . 'themes/fab/css-1.5.0',
 	WT_ROOT . 'themes/minimal/css-1.5.0',
-	WT_ROOT . 'themes/webtrees/css-1.5.0',
+	WT_ROOT . 'themes/nexu/css-1.5.0',
 	WT_ROOT . 'themes/xenea/css-1.5.0',
 	// Removed in 1.5.2
 	WT_ROOT . 'themes/_administration/css-1.5.1',
@@ -294,7 +294,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/css-1.5.1',
 	WT_ROOT . 'themes/fab/css-1.5.1',
 	WT_ROOT . 'themes/minimal/css-1.5.1',
-	WT_ROOT . 'themes/webtrees/css-1.5.1',
+	WT_ROOT . 'themes/nexu/css-1.5.1',
 	WT_ROOT . 'themes/xenea/css-1.5.1',
 	// Removed in 1.5.3
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_asst_help.php',
@@ -313,7 +313,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/css-1.5.2',
 	WT_ROOT . 'themes/fab/css-1.5.2',
 	WT_ROOT . 'themes/minimal/css-1.5.2',
-	WT_ROOT . 'themes/webtrees/css-1.5.2',
+	WT_ROOT . 'themes/nexu/css-1.5.2',
 	WT_ROOT . 'themes/xenea/css-1.5.2',
 	// Removed in 1.6.0
 	WT_ROOT . 'downloadbackup.php',
@@ -324,7 +324,7 @@ $old_files = array(
 	WT_ROOT . 'themes/colors/css-1.5.3',
 	WT_ROOT . 'themes/fab/css-1.5.3',
 	WT_ROOT . 'themes/minimal/css-1.5.3',
-	WT_ROOT . 'themes/webtrees/css-1.5.3',
+	WT_ROOT . 'themes/nexu/css-1.5.3',
 	WT_ROOT . 'themes/xenea/css-1.5.3',
 	// Removed in 1.6.1
 	WT_ROOT . 'includes/authentication.php',
@@ -339,8 +339,8 @@ $old_files = array(
 	WT_ROOT . 'themes/fab/jquery-ui-1.10.3',
 	WT_ROOT . 'themes/minimal/css-1.6.0',
 	WT_ROOT . 'themes/minimal/jquery-ui-1.10.3',
-	WT_ROOT . 'themes/webtrees/css-1.6.0',
-	WT_ROOT . 'themes/webtrees/jquery-ui-1.10.3',
+	WT_ROOT . 'themes/nexu/css-1.6.0',
+	WT_ROOT . 'themes/nexu/jquery-ui-1.10.3',
 	WT_ROOT . 'themes/xenea/css-1.6.0',
 	WT_ROOT . 'themes/xenea/jquery-ui-1.10.3',
 	WT_ROOT . 'themes/_administration/css-1.6.0',
@@ -400,10 +400,10 @@ $old_files = array(
 	WT_ROOT . 'themes/minimal/templates',
 	WT_ROOT . 'themes/minimal/header.php',
 	WT_ROOT . 'themes/minimal/footer.php',
-	WT_ROOT . 'themes/webtrees/css-1.6.2',
-	WT_ROOT . 'themes/webtrees/templates',
-	WT_ROOT . 'themes/webtrees/header.php',
-	WT_ROOT . 'themes/webtrees/footer.php',
+	WT_ROOT . 'themes/nexu/css-1.6.2',
+	WT_ROOT . 'themes/nexu/templates',
+	WT_ROOT . 'themes/nexu/header.php',
+	WT_ROOT . 'themes/nexu/footer.php',
 	WT_ROOT . 'themes/xenea/css-1.6.2',
 	WT_ROOT . 'themes/xenea/templates',
 	WT_ROOT . 'themes/xenea/header.php',
@@ -520,7 +520,7 @@ if (
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo I18N::translate('These pages provide access to all the configuration settings and management tools for this webtrees site.'); ?>
+	<?php echo I18N::translate('These pages provide access to all the configuration settings and management tools for this nexu site.'); ?>
 </p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -549,29 +549,29 @@ if (
 
 	<!-- WEBTREES VERSION -->
 	<div class="panel <?php echo Auth::isAdmin() && $update_available ? 'panel-danger' : 'panel-primary'; ?>">
-		<div class="panel-heading" role="tab" id="webtrees-version-heading">
+		<div class="panel-heading" role="tab" id="nexu-version-heading">
 			<h2 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#webtrees-version-panel" aria-expanded="true" aria-controls="webtrees-version-panel">
+				<a data-toggle="collapse" data-parent="#accordion" href="#nexu-version-panel" aria-expanded="true" aria-controls="nexu-version-panel">
 					<?php echo WT_WEBTREES, ' ', WT_VERSION; ?>
 				</a>
 			</h2>
 		</div>
-		<div id="webtrees-version-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="webtrees-version-heading">
+		<div id="nexu-version-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="nexu-version-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="http://webtrees.net/">webtrees.net</a>'); ?>
+					<?php echo /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="http://nexu.net/">nexu.net</a>'); ?>
 				</p>
 				<?php if (Auth::isAdmin()): ?>
 				<p>
 					<?php if ($latest_version === ''): ?>
 					<?php echo I18N::translate('No upgrade information is available.'); ?>
 					<?php elseif ($update_available): ?>
-					<?php echo I18N::translate('A new version of webtrees is available.'); ?>
+					<?php echo I18N::translate('A new version of nexu is available.'); ?>
 					<a href="admin_site_upgrade.php" class="error">
-						<?php echo /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)); ?>
+						<?php echo /* I18N: %s is a version number */ I18N::translate('Upgrade to nexu %s.', Filter::escapeHtml($latest_version)); ?>
 					</a>
 					<?php else: ?>
-						<?php echo I18N::translate('This is the latest version of webtrees.  No upgrade is available.'); ?>
+						<?php echo I18N::translate('This is the latest version of nexu.  No upgrade is available.'); ?>
 					<?php endif; ?>
 				</p>
 				<?php endif; ?>
@@ -835,7 +835,7 @@ if (
 		<div id="old-files-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="old-files-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'); ?>
+					<?php echo I18N::translate('Files have been found from a previous version of nexu.  Old files can sometimes be a security risk.  You should delete them.'); ?>
 				</p>
 				<ul class="list-unstyled">
 					<?php foreach ($files_to_delete as $file_to_delete): ?>

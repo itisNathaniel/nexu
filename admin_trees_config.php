@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -196,7 +196,7 @@ case 'general':
 	$WT_TREE->setPreference('ADVANCED_NAME_FACTS', Filter::post('ADVANCED_NAME_FACTS'));
 	$WT_TREE->setPreference('ADVANCED_PLAC_FACTS', Filter::post('ADVANCED_PLAC_FACTS'));
 	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN', Filter::postBool('ALLOW_THEME_DROPDOWN'));
-	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
+	// For backwards compatibility with nexu 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
 	$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique(array(
 		Filter::post('CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
@@ -740,7 +740,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
+				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let nexu create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -866,7 +866,7 @@ $controller
 	<!-- WEBTREES_EMAIL -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="WEBTREES_EMAIL">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('webtrees reply address'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('nexu reply address'); ?>
 		</label>
 		<div class="col-sm-9">
 			<input
@@ -879,7 +879,7 @@ $controller
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('WEBTREES_EMAIL')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “webtrees reply address” configuration setting */ I18N::translate('E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>.'); ?>
+				<?php echo /* I18N: Help text for the “nexu reply address” configuration setting */ I18N::translate('E-mail address to be used in the “From:” field of e-mails that nexu creates automatically.<br><br>nexu can automatically create e-mails to notify administrators of changes that need to be reviewed.  nexu also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: nexu-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>nexu-noreply</i>.'); ?>
 			</p>
 		</div>
 	</div>
@@ -992,7 +992,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::selectEditControl('THEME_DIR', Theme::themeNames(), I18N::translate('<default theme>'), $WT_TREE->getPreference('THEME_DIR'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Default theme” configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
+				<?php echo /* I18N: Help text for the “Default theme” configuration setting */ I18N::translate('You can change the appearance of nexu using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1617,7 +1617,7 @@ $controller
 			<?php echo FunctionsEdit::radioButtons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Date differences” configuration setting */
-				I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
+				I18N::translate('When this option is selected, nexu will calculate the age differences between siblings, children, spouses, etc.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1694,7 +1694,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('HIDE_GEDCOM_ERRORS', $hide_show, $WT_TREE->getPreference('HIDE_GEDCOM_ERRORS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “GEDCOM errors” configuration setting */ I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message.'); ?>
+				<?php echo /* I18N: Help text for the “GEDCOM errors” configuration setting */ I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and nexu understands most of them.  When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message.'); ?>
 			</p>
 		</div>
 	</fieldset>

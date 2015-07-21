@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,7 +33,7 @@ require 'vendor/autoload.php';
 // This script (uniquely) does not load session.php.
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', 'webtrees');
+define('WT_WEBTREES', 'nexu');
 define('WT_BASE_URL', '');
 define('WT_DATA_DIR', 'data/');
 define('WT_DEBUG_SQL', false);
@@ -67,24 +67,9 @@ header('Content-Type: text/html; charset=UTF-8');
 ?>
 <!DOCTYPE html>
 <html <?php echo I18N::htmlAttributes(); ?>>
-<head>
-<link rel='stylesheet' type='text/css' href='css/bootstrap-theme.css'>
-	<meta charset="UTF-8">
-	<title>
-		Get Started
-	</title>
-	</head>
-	<body>
-	<nav class="navbar navbar-default">
-<div class="container-fluid">
-<div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand"><b>nexu</b></a>
-    </div>
-  </div>
- </div>
-</nav>
-	<div class="container">
+<title> Get Started</title>
+	<!-- Fetch the header -->
+	<? include("composition/header-withoutmenu.html"); ?>
 		<h1>
 			<? echo I18N::translate('get started'); ?>
 		</h1>
@@ -96,12 +81,15 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 ////////////////////////////////////////////////////////////////////////////////
 // Step one - choose language and confirm server configuration
 ////////////////////////////////////////////////////////////////////////////////
-
 if (!isset($_POST['lang'])) {
 	$installed_languages = array();
 	foreach (I18N::installedLocales() as $locale) {
 		$installed_languages[$locale->languageTag()] = $locale->endonym();
 	}
+
+	echo '<br><div class="progress progress-striped active">',
+	  '<div class="progress-bar" style="width: 5%;"></div>',
+	'</div>';
 
 	echo
 		'<p class="text-muted">', I18N::translate('Change language'), ' ',
@@ -115,14 +103,14 @@ if (!isset($_POST['lang'])) {
 	$disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
 	foreach (array('parse_ini_file') as $function) {
 		if (in_array($function, $disable_functions)) {
-			echo '<p class="test-danger">', /* I18N: %s is a PHP function/module/setting */ I18N::translate('%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it.', $function . '()'), '</p>';
+			echo '<p class="test-danger">', /* I18N: %s is a PHP function/module/setting */ I18N::translate('%s is disabled on this server.  You cannot install nexu until it is enabled.  Please ask your server’s administrator to enable it.', $function . '()'), '</p>';
 			$errors = true;
 		}
 	}
 	// Mandatory extensions
 	foreach (array('pcre', 'pdo', 'pdo_mysql', 'session', 'iconv') as $extension) {
 		if (!extension_loaded($extension)) {
-			echo '<p class="test-danger">', I18N::translate('PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it.', $extension), '</p>';
+			echo '<p class="test-danger">', I18N::translate('PHP extension “%s” is disabled.  You cannot install nexu until this is enabled.  Please ask your server’s administrator to enable it.', $extension), '</p>';
 			$errors = true;
 		}
 	}
@@ -147,7 +135,7 @@ if (!isset($_POST['lang'])) {
 		}
 	}
 	if (!$warnings && !$errors) {
-		echo '<p class="text-success">', I18N::translate('The server configuration is OK.'), '</p>';
+		echo '<p class="text-success">', I18N::translate("your server's configuration is ok."), '</p>';
 	}
 	echo '<h3>', I18N::translate('server capacity'), '</h3>';
 	// Previously, we tried to determine the maximum value that we could set for these values.
@@ -181,7 +169,7 @@ if (!isset($_POST['lang'])) {
 		'</p><p>',
 		I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',
-		I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator.'),
+		I18N::translate('If your server’s security policy permits it, you will be able to request increased memory or CPU time using the nexu administration page.  Otherwise, you will need to contact your server’s administrator.'),
 		'</p>',
 		'</div>';
 	if (!$errors) {
@@ -196,6 +184,7 @@ if (!isset($_POST['lang'])) {
 ////////////////////////////////////////////////////////////////////////////////
 // Step two - The data folder needs to be writable
 ////////////////////////////////////////////////////////////////////////////////
+
 
 $text1 = uniqid();
 $text2 = '';
@@ -220,6 +209,7 @@ if ($text1 !== $text2) {
 ////////////////////////////////////////////////////////////////////////////////
 // Step three - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
+
 
 if (!isset($_POST['dbhost'])) {
 	$_POST['dbhost'] = 'localhost';
@@ -253,7 +243,7 @@ try {
 	Database::exec("SET NAMES 'utf8'");
 	$row = Database::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
 	if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
-		echo '<p class="test-danger">', I18N::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
+		echo '<p class="test-danger">', I18N::translate('This database is only running MySQL version %s.  You cannot install nexu here.', $row->value), '</p>';
 	} else {
 		$db_version_ok = true;
 	}
@@ -263,37 +253,46 @@ try {
 		// If we’ve supplied a login, then show the error
 		echo
 			'<p class="test-danger">', I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
-			'<pre>', $ex->getMessage(), '</pre>',
+			'<blockquote>', $ex->getMessage(), '</blockquote>',
 			'<p class="test-danger">', I18N::translate('Check the settings and try again.'), '</p>';
 	}
 }
 
+
+
 if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 	echo
+		'<br><div class="progress progress-striped active">','<div class="progress-bar" style="width: 30%;"></div>',
+		'</div>',
 		'<h3>', I18N::translate('database server'), '</h3>',
-		'<p>', I18N::translate('webtrees needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
-		'<p>', I18N::translate('Your server’s administrator will provide you with the connection details.'), '</p>',
-		'<fieldset><legend>', I18N::translate('Database connection'), '</legend>',
-		'<table border="0"><tr><td>',
-		I18N::translate('Server name'), '</td><td>',
-		'<input type="text" name="dbhost" value="', Filter::escapeHtml($_POST['dbhost']), '" dir="ltr"></td><td>',
+		'<p>', I18N::translate('nexu needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
+		'<p>', I18N::translate('If you’re unsure, your server’s administrator will provide you with the connection details.'), '</p>',
+		'<p>', I18N::translate('Please take care when entering as these fields are case sensitive'), '</p>',
+
+		'<fieldset><h3>', I18N::translate('database connection'),'</h3><br>',
+		'<div class="form-signup">',
+
+		'<label class="control-label" for="focusedInput">',I18N::translate('Server name'),'</label>',
+		'<input type="text" name="dbhost" class="form-control" id="inputSmall" value="', Filter::escapeHtml($_POST['dbhost']), '" dir="ltr">',
 		I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Port number'), '</td><td>',
-		'<input type="text" name="dbport" value="', Filter::escapeHtml($_POST['dbport']), '"></td><td>',
+		'<br>',
+
+		'<label class="control-label" for="focusedInput">', I18N::translate('Port number'), '</label>',
+		'<input type="text" class="form-control" id="inputSmall" name="dbport" value="', Filter::escapeHtml($_POST['dbport']), '">',
 		I18N::translate('Most sites are configured to use the default value of 3306.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Database user account'), '</td><td>',
-		'<input type="text" name="dbuser" value="', Filter::escapeHtml($_POST['dbuser']), '" autofocus></td><td>',
-		I18N::translate('This is case sensitive.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Database password'), '</td><td>',
-		'<input type="password" name="dbpass" value="', Filter::escapeHtml($_POST['dbpass']), '"></td><td>',
-		I18N::translate('This is case sensitive.'),
-		'</td></tr><tr><td>',
-		'</td></tr></table>',
+		'<br>',
+
+		'<label class="control-label" for="focusedInput">',I18N::translate('Database user account'), '</label>',
+		'<input type="text" class="form-control" id="inputSmall" name="dbuser" value="', Filter::escapeHtml($_POST['dbuser']), '" autofocus>',
+		'<br>',
+
+		'<label class="control-label" for="focusedInput">',I18N::translate('Database password'), '</label>',
+		'<input type="password" class="form-control" id="inputSmall" name="dbpass" value="', Filter::escapeHtml($_POST['dbpass']), '">',
+		'<br>',
+
 		'</fieldset>',
-		'<br><hr><input type="submit" class="btn btn-primary" value="', I18N::translate('continue'), '">',
+		'<br><input type="submit" class="btn btn-primary" value="', I18N::translate('continue'), '">',
+		'</div>',
 		'</form>',
 		'</body></html>';
 
@@ -334,9 +333,9 @@ if ($DBNAME && $DBNAME == $_POST['dbname'] && $TBLPREFIX == $_POST['tblpfx']) {
 		$dbname_ok = true;
 	} catch (PDOException $ex) {
 		echo
-			'<p class="test-danger">', I18N::translate('Unable to connect using these settings.  Your server gave the following error.'), '</p>',
-			'<pre>', $ex->getMessage(), '</pre>',
-			'<p class="test-danger">', I18N::translate('Check the settings and try again.'), '</p>';
+			'<div class="test-danger">', I18N::translate('Unable to connect using these settings.  Your server gave the following error:'), '</div></p>',
+			'<blockquote>', $ex->getMessage(), '</blockquote>',
+			'<p class="test-warning">', I18N::translate('Check the settings and try again.'), '</p>';
 	}
 }
 
@@ -344,9 +343,9 @@ if ($DBNAME && $DBNAME == $_POST['dbname'] && $TBLPREFIX == $_POST['tblpfx']) {
 if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
-		// webtrees has a USER table
+		// nexu has a USER table
 		Database::prepare("SELECT COUNT(*) FROM `##users`")->fetchOne();
-		echo '<p class="test-danger">', I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		echo '<p class="test-danger">', I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new nexu system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok = false;
 	} catch (PDOException $ex) {
 		// Table not found?  Good!
@@ -355,9 +354,9 @@ if ($dbname_ok) {
 if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
-		// [We changed the column name in webtrees, so we can tell the difference!]
+		// [We changed the column name in nexu, so we can tell the difference!]
 		Database::prepare("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
-		echo '<p class="test-danger">', I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
+		echo '<div class="alert alert-danger">', I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new nexu system.  You can import your PhpGedView data and settings later.'), '</div>';
 		$dbname_ok = false;
 	} catch (PDOException $ex) {
 		// Table/column not found?  Good!
@@ -366,22 +365,22 @@ if ($dbname_ok) {
 
 if (!$dbname_ok) {
 	echo
-		'<h3>', I18N::translate('Database and table names'), '</h3>',
-		'<p>', I18N::translate('A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges).'), '</p>',
-		'<fieldset><legend>', I18N::translate('Database name'), '</legend>',
-		'<table border="0"><tr><td>',
-		I18N::translate('Database name'), '</td><td>',
-		'<input type="text" name="dbname" value="', Filter::escapeHtml($_POST['dbname']), '" autofocus></td><td>',
-		I18N::translate('This is case sensitive.  If a database with this name does not already exist webtrees will attempt to create one for you.  Success will depend on permissions set for your web server, but you will be notified if this fails.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Table prefix'), '</td><td>',
-		'<input type="text" name="tblpfx" value="', Filter::escapeHtml($_POST['tblpfx']), '"></td><td>',
+		'<br><div class="progress progress-striped active">','<div class="progress-bar" style="width: 60%;"></div></div>',
+		'<h3>', I18N::translate('database and table names'), '</h3>',
+		'<p>', I18N::translate('database servers can store many databases. <br> you can select an existing database or create a new one (if your database user account has sufficient privileges).'), '</p>',
+		'<div class="form-signup">',
+		'<label class="control-label" for="focusedInput">',I18N::translate('Database name'),'</label>','<br>',
+		'<input type="text" name="dbname" class="form-control" id="inputSmall" value="', Filter::escapeHtml($_POST['dbname']), '" autofocus>','<br>',
+		I18N::translate('This is case sensitive.  If a database with this name does not already exist nexu will attempt to create one for you.  Success will depend on permissions set for your web server, but you will be notified if this fails.'),'<br>','<br>',
+
+		'<label class="control-label" for="focusedInput">',I18N::translate('Table prefix'), '</label>','</td><td>','<br>',
+		'<input type="text" name="tblpfx" class="form-control" id="inputSmall" value="', Filter::escapeHtml($_POST['tblpfx']), '"></td><td>','<br>',
 		I18N::translate('The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want.'),
-		'</td></tr></table>',
-		'</fieldset>',
-		'<br><hr><input type="submit" class="btn btn-primary" value="', I18N::translate('continue'), '">',
+		'<br>',
+		'</fieldset>','</div>',
+		'<br><input type="submit" class="btn btn-primary" value="', I18N::translate('continue'), '">',
 		'</form>',
-		'</body></html>';
+		'</body></html></div>';
 
 	return;
 } else {
@@ -410,43 +409,41 @@ if (!isset($_POST['wtemail'])) {
 	$_POST['wtemail'] = '';
 }
 
+echo '<br><div class="progress progress-striped active">','<div class="progress-bar" style="width: 90%;"></div></div>';
 if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass']) < 6 || strlen($_POST['wtpass2']) < 6 || empty($_POST['wtemail']) || $_POST['wtpass'] != $_POST['wtpass2']) {
 	if (strlen($_POST['wtpass']) > 0 && strlen($_POST['wtpass']) < 6) {
-		echo '<p class="test-danger">', I18N::translate('The password needs to be at least six characters long.'), '</p>';
+		echo '<div class="alert alert-danger">', I18N::translate('The password needs to be at least six characters long.'), '</div>';
 	} elseif ($_POST['wtpass'] != $_POST['wtpass2']) {
-		echo '<p class="test-danger">', I18N::translate('The passwords do not match.'), '</p>';
+		echo '<div class="alert alert-danger">', I18N::translate('The passwords do not match.'), '</div>';
 	} elseif ((empty($_POST['wtname']) || empty($_POST['wtuser']) || empty($_POST['wtpass']) || empty($_POST['wtemail'])) && $_POST['wtname'] . $_POST['wtuser'] . $_POST['wtpass'] . $_POST['wtemail'] != '') {
-		echo '<p class="test-danger">', I18N::translate('You must enter all the administrator account fields.'), '</p>';
+		echo '<div class="alert alert-danger">', I18N::translate('You must enter all the administrator account fields.'), '</div>';
 	}
 	echo
-		'<h3>', I18N::translate('System settings'), '</h3>',
-		'<h3>', I18N::translate('Administrator account'), '</h3>',
-		'<p>', I18N::translate('You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password.'), '</p>',
-		'<fieldset><legend>', I18N::translate('Administrator account'), '</legend>',
-		'<table border="0"><tr><td>',
-		I18N::translate('Your name'), '</td><td>',
-		'<input type="text" name="wtname" value="', Filter::escapeHtml($_POST['wtname']), '" autofocus></td><td>',
-		I18N::translate('This is your real name, as you would like it displayed on screen.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Login ID'), '</td><td>',
-		'<input type="text" name="wtuser" value="', Filter::escapeHtml($_POST['wtuser']), '"></td><td>',
-		I18N::translate('You will use this to login to webtrees.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Password'), '</td><td>',
-		'<input type="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '"></td><td>',
-		I18N::translate('This must be at least six characters long.  It is case-sensitive.'),
-		'</td></tr><tr><td>',
-		'&nbsp;', '</td><td>',
-		'<input type="password" name="wtpass2" value="', Filter::escapeHtml($_POST['wtpass2']), '"></td><td>',
-		I18N::translate('Type your password again, to make sure you have typed it correctly.'),
-		'</td></tr><tr><td>',
-		I18N::translate('Email address'), '</td><td>',
-		'<input type="email" name="wtemail" value="', Filter::escapeHtml($_POST['wtemail']), '"></td><td>',
-		I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'),
-		'</td></tr><tr><td>',
-		'</td></tr></table>',
-		'</fieldset>',
-		'<br><hr><input type="submit" class="btn btn-primary" value="', I18N::translate('continue'), '">',
+		'<h3>', I18N::translate('system settings'), '</h3>',
+		I18N::translate('You need to set up an administrator account.<br>This account can control all aspects of this nexu installation.<br>Please choose a strong password.'), '</p>',
+		'<h3>', I18N::translate('Administrator account'), '</h3><br>',
+
+		'<div class="form-signup">',
+		'<label class="control-label" for="focusedInput">', I18N::translate('Your name'), '</label>','<br>',
+		'<input type="text" class="form-control" id="inputSmall" name="wtname" value="', Filter::escapeHtml($_POST['wtname']), '" autofocus>',
+		I18N::translate('This is your real name, as you would like it displayed on screen.'),'<br>','<br>',
+
+		'<label class="control-label" for="focusedInput">',I18N::translate('Username'), '</label>',
+		'<input type="text" class="form-control" id="inputSmall" name="wtuser" value="', Filter::escapeHtml($_POST['wtuser']), '">',
+		I18N::translate('You will use this to login to nexu.'),'<br>','<br>'.
+
+		'<label class="control-label" for="focusedInput">', I18N::translate('Email address'), '</label>','<br>',
+		'<input type="email" class="form-control" id="inputSmall" name="wtemail" value="', Filter::escapeHtml($_POST['wtemail']), '">',
+		I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'),'<br><br>',
+
+		'<div id="pwd-container"><div class="form-group"><label class="control-label" for="focusedInput">',I18N::translate('Password'), '</label>','<br>',
+		'<input type="password" class="form-control" id="inputSmall"  id="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '"></div></div>',
+		I18N::translate('This must be at least six characters long.  It is case-sensitive.'),'<br>','<br>',
+		'<input type="password" class="form-control" id="inputSmall" name="wtpass2" value="', Filter::escapeHtml($_POST['wtpass2']), '">',
+		I18N::translate('Type your password again, to make sure you have typed it correctly.'),'<br>','<br>',
+
+		'</fieldset></div>',
+		'<input type="submit" class="btn btn-primary" value="', I18N::translate('continue'), '"><br><br>',
 		'</form>',
 		'</body></html>';
 
@@ -489,14 +486,15 @@ try {
 
 	file_put_contents(WT_DATA_DIR . 'config.ini.php', $config_ini_php);
 
-	// Done - start using webtrees!
+	// Done - start using nexu!
 	echo '<script>document.location=document.location;</script>';
 	echo '</form></body></html>';
 } catch (PDOException $ex) {
 	echo
 		'<p class="test-danger">', I18N::translate('An unexpected database error occurred.'), '</p>',
 		'<pre>', $ex->getMessage(), '</pre>',
-		'<p class="info">', I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
+		'<p class="info">', I18N::translate('The nexu developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
+
 
 

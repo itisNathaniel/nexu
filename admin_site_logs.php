@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -109,7 +109,7 @@ case 'delete':
 
 case 'export':
 	header('Content-Type: text/csv');
-	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
+	header('Content-Disposition: attachment; filename="nexu-logs.csv"');
 	$rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		echo

@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ $controller
 
 // The readme file contains code-quality badges before the first header
 $readme = file_get_contents('README.md');
-$readme = preg_replace('/.*(?=# webtrees)/s', '', $readme);
+$readme = preg_replace('/.*(?=# nexu)/s', '', $readme);
 
 ?>
 <ol class="breadcrumb small">

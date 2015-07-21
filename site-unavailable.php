@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ require 'vendor/autoload.php';
 // This script does not load session.php.
 // session.php won’t run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', 'webtrees');
+define('WT_WEBTREES', 'nexu');
 define('WT_BASE_URL', '');
 define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
@@ -107,7 +107,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 				</li>
 			</ol>
 			<p class="good">
-				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://webtrees.net">webtrees.net</a>.'); ?>
+				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://nexu.net">nexu.net</a>.'); ?>
 			</p>
 		</div>
 	</body>

@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ if ($WT_TREE || count(User::all()) > 1) {
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(I18N::translate('PhpGedView to webtrees transfer wizard'));
+	->setPageTitle(I18N::translate('PhpGedView to nexu transfer wizard'));
 
 $error    = false;
 $PGV_PATH = Filter::post('PGV_PATH');
@@ -88,7 +88,7 @@ if ($PGV_PATH) {
 		}
 		$wt_config = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 		if ($DBHOST != $wt_config['dbhost']) {
-			FlashMessages::addMessage(I18N::translate('PhpGedView must use the same database as webtrees.', 'danger'));
+			FlashMessages::addMessage(I18N::translate('PhpGedView must use the same database as nexu.', 'danger'));
 			$PGV_PATH = null;
 			unset($wt_config);
 		} else {
@@ -107,7 +107,7 @@ if ($PGV_PATH) {
 			} catch (PDOException $ex) {
 				FlashMessages::addMessage(
 					/* I18N: %s is a database name/identifier */
-					I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME . '@' . $DBHOST) .
+					I18N::translate('nexu cannot connect to the PhpGedView database: %s.', $DBNAME . '@' . $DBHOST) .
 					'<br>' .
 					/* I18N: %s is an error message */
 					I18N::translate('MySQL gave the error: %s', $ex->getMessage()), 'danger');
@@ -255,7 +255,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"   WHEN 'themes/simplygreen/' THEN 'colors'" .
 		"   WHEN 'themes/simplyred/'   THEN 'colors'" .
 		"   WHEN 'themes/xenea/'       THEN 'xenea'" .
-		"   ELSE 'themes/webtrees/'" . // ocean, simplyred/blue/green, standard, wood
+		"   ELSE 'themes/nexu/'" . // ocean, simplyred/blue/green, standard, wood
 		"  END" .
 		"  WHEN 'LANGUAGE' THEN" .
 		"   CASE setting_value" .
@@ -286,7 +286,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"   WHEN 'slovak'     THEN 'sk'" .
 		"   WHEN 'slovenian'  THEN 'sl'" .
 		"   WHEN 'spanish'    THEN 'es'" .
-		"   WHEN 'spanish-ar' THEN 'es'" . // webtrees does not yet have this variant
+		"   WHEN 'spanish-ar' THEN 'es'" . // nexu does not yet have this variant
 		"   WHEN 'swedish'    THEN 'sv'" .
 		"   WHEN 'turkish'    THEN 'tr'" .
 		"   WHEN 'vietnamese' THEN 'vi'" .
@@ -351,7 +351,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"  WHEN 'slovak'     THEN 'sk'" .
 		"  WHEN 'slovenian'  THEN 'sl'" .
 		"  WHEN 'spanish'    THEN 'es'" .
-		"  WHEN 'spanish-ar' THEN 'es'" . // webtrees does not yet have this variant
+		"  WHEN 'spanish-ar' THEN 'es'" . // nexu does not yet have this variant
 		"  WHEN 'swedish'    THEN 'sv'" .
 		"  WHEN 'turkish'    THEN 'tr'" .
 		"  WHEN 'vietnamese' THEN 'vi'" .
@@ -366,7 +366,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"  WHEN 'themes/simplygreen/' THEN 'colors'" .
 		"  WHEN 'themes/simplyred/'   THEN 'colors'" .
 		"  WHEN 'themes/xenea/'       THEN 'xenea'" .
-		"  ELSE 'themes/webtrees/'" . // ocean, simplyred/blue/green, standard, wood
+		"  ELSE 'themes/nexu/'" . // ocean, simplyred/blue/green, standard, wood
 		"  END" .
 		" ELSE" .
 		"  CASE" .
@@ -471,7 +471,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			"  WHEN 'spanish'    THEN 'es'" .
 			"  WHEN 'swedish'    THEN 'sv'" .
 			"  WHEN 'turkish'    THEN 'tr'" .
-			"  ELSE 'en_US'" . // PhpGedView supports other languages that webtrees does not (yet)
+			"  ELSE 'en_US'" . // PhpGedView supports other languages that nexu does not (yet)
 			" END" .
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)" .
@@ -493,7 +493,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			"  WHEN 'themes/simplygreen/' THEN 'colors'" .
 			"  WHEN 'themes/simplyred/'   THEN 'colors'" .
 			"  WHEN 'themes/xenea/'       THEN 'xenea'" .
-			"  ELSE 'themes/webtrees/'" . // ocean, simplyred/blue/green, standard, wood
+			"  ELSE 'themes/nexu/'" . // ocean, simplyred/blue/green, standard, wood
 			" END" .
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)" .
@@ -933,7 +933,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'xenea'));
 		break;
 	default:
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'webtrees'));
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', 'nexu'));
 		break;
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THUMBNAIL_WIDTH', $THUMBNAIL_WIDTH));
@@ -945,7 +945,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 }
 Database::prepare("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('config', 'privacy', 'path', 'pgv_ver', 'imported')")->execute();
 
-// webtrees 1.0.5 combines user and gedcom settings for relationship privacy
+// nexu 1.0.5 combines user and gedcom settings for relationship privacy
 // into a combined user-gedcom setting, for more granular control
 Database::exec(
 	"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)" .

@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -64,7 +64,7 @@ if ($latest_version == '') {
 }
 
 if (version_compare(WT_VERSION, $latest_version) >= 0) {
-	echo '<p>', I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
+	echo '<p>', I18N::translate('This is the latest version of nexu.  No upgrade is available.'), '</p>';
 
 	return;
 }
@@ -76,10 +76,10 @@ if ($continue) {
 	echo '<input type="hidden" name="continue" value="1">';
 	echo '<p>', I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
 } else {
-	echo '<p>', I18N::translate('A new version of webtrees is available.'), '</p>';
+	echo '<p>', I18N::translate('A new version of nexu is available.'), '</p>';
 	echo '<p>', I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.'), '</p>';
 	echo '<p>', I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
-	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ I18N::translate('Upgrade to webtrees %s.', $latest_version_html), '</button>';
+	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ I18N::translate('Upgrade to nexu %s.', $latest_version_html), '</button>';
 	echo '</form>';
 
 	return;
@@ -195,9 +195,9 @@ foreach (Module::getInstalledModules('disabled') as $module) {
 	}
 }
 if ($custom_modules) {
-	echo '<br>', I18N::translate('You should consult the module’s author to confirm compatibility with this version of webtrees.');
+	echo '<br>', I18N::translate('You should consult the module’s author to confirm compatibility with this version of nexu.');
 	echo '<br>', '<button type="submit" name="modules" value="disable">', I18N::translate('Disable these modules'), '</button> — ', I18N::translate('You can re-enable these modules after the upgrade.');
-	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and [...] */ I18N::translate('Upgrade anyway'), '</button> — ', I18N::translate('Caution: old modules may not work, or they may prevent webtrees from working.');
+	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and [...] */ I18N::translate('Upgrade anyway'), '</button> — ', I18N::translate('Caution: old modules may not work, or they may prevent nexu from working.');
 	echo '</li></ul></form>';
 
 	return;
@@ -223,7 +223,7 @@ foreach (Theme::themeNames() as $theme_id => $theme_name) {
 	case 'colors':
 	case 'fab':
 	case 'minimal':
-	case 'webtrees':
+	case 'nexu':
 	case 'xenea':
 		break;
 	default:
@@ -259,9 +259,9 @@ foreach (Theme::themeNames() as $theme_id => $theme_name) {
 }
 
 if ($custom_themes) {
-	echo '<br>', I18N::translate('You should consult the theme’s author to confirm compatibility with this version of webtrees.');
+	echo '<br>', I18N::translate('You should consult the theme’s author to confirm compatibility with this version of nexu.');
 	echo '<br>', '<button type="submit" name="themes" value="disable">', I18N::translate('Disable these themes'), '</button> — ', I18N::translate('You can re-enable these themes after the upgrade.');
-	echo '<br>', '<button type="submit" name="themes" value="ignore">', I18N::translate('Upgrade anyway'), '</button> — ', I18N::translate('Caution: old themes may not work, or they may prevent webtrees from working.');
+	echo '<br>', '<button type="submit" name="themes" value="ignore">', I18N::translate('Upgrade anyway'), '</button> — ', I18N::translate('Caution: old themes may not work, or they may prevent nexu from working.');
 	echo '</li></ul></form>';
 
 	return;
@@ -354,15 +354,15 @@ reset_timeout();
 $start_time = microtime(true);
 $res        = $archive->extract(
 	\PCLZIP_OPT_PATH, $zip_dir,
-	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	\PCLZIP_OPT_REMOVE_PATH, 'nexu',
 	\PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
 
 if (is_array($res)) {
 	foreach ($res as $result) {
-		// Note that we're stripping the initial "webtrees/", so the top folder will fail.
-		if ($result['status'] != 'ok' && $result['filename'] != 'webtrees/') {
+		// Note that we're stripping the initial "nexu/", so the top folder will fail.
+		if ($result['status'] != 'ok' && $result['filename'] != 'nexu/') {
 			echo '<br>', I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 			echo '<pre>', $result['status'], '</pre>';
 			echo '<pre>', $result['filename'], '</pre>';
@@ -430,7 +430,7 @@ echo '</li>';
 
 echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Copy files…');
 
-// The wiki tells people how to customize webtrees by modifying various files.
+// The wiki tells people how to customize nexu by modifying various files.
 // Create a backup of these, just in case the user forgot!
 try {
 	copy('app/GedcomCode/GedcomCode/Rela.php', WT_DATA_DIR . 'GedcomCodeRela' . date('-Y-m-d') . '.php');
@@ -443,7 +443,7 @@ reset_timeout();
 $start_time = microtime(true);
 $res        = $archive->extract(
 	\PCLZIP_OPT_PATH, WT_ROOT,
-	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	\PCLZIP_OPT_REMOVE_PATH, 'nexu',
 	\PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);

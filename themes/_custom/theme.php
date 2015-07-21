@@ -2,8 +2,8 @@
 namespace MyNamespace\MyProject;
 
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Theme\WebtreesTheme;
  * use, you should copy this entire folder ("themes/_custom") to a new name.
  * For example, "themes/custom".  You should also rename the class.
  *
- * In this example, we are extending the webtrees theme, but you could
+ * In this example, we are extending the nexu theme, but you could
  * also extend any of the core themes, or even the base theme.
  *
  * Only the first two functions are required: themeId() and themeName().

@@ -1,7 +1,7 @@
 <?php
 /**
- * webtrees: online genealogy
- * Copyright (C) 2015 webtrees development team
+ * nexu: online genealogy
+ * Copyright (C) 2015 nexu development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -272,7 +272,7 @@ case 'importform':
 					<?php echo /* I18N: A configuration setting */ I18N::translate('Keep media objects'); ?>
 				</label>
 				<p class="small text-muted">
-					<?php echo I18N::translate('If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file.'); ?>
+					<?php echo I18N::translate('If you have created media objects in nexu, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file.'); ?>
 				</p>
 				<label>
 					<input type="checkbox" name="WORD_WRAPPED_NOTES" value="1" <?php echo $tree->getPreference('WORD_WRAPPED_NOTES') ? 'checked' : ''; ?>>
@@ -294,8 +294,8 @@ case 'importform':
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>"
 					>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
-					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>'); ?>
+					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow nexu to find the file, the first part of the path must be removed.'); ?>
+					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and nexu expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>'); ?>
 				</p>
 			</div>
 		</fieldset>
@@ -691,18 +691,18 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 			<h2 class="panel-title">
 			<i class="fa fa-fw fa-magic"></i>
 			<a data-toggle="collapse" data-parent="#accordion" href="#pgv-import-wizard">
-				<?php echo I18N::translate('PhpGedView to webtrees transfer wizard'); ?>
+				<?php echo I18N::translate('PhpGedView to nexu transfer wizard'); ?>
 			</a>
 		</h2>
 		</div>
 		<div id="pgv-import-wizard" class="panel-collapse collapse">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:'); ?>
+					<?php echo I18N::translate('The PhpGedView to nexu wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new nexu one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new nexu database.  The following requirements are necessary:'); ?>
 				</p>
 				<ul>
 					<li>
-						<?php echo I18N::translate('webtrees’ database must be on the same server as PhpGedView’s'); ?>
+						<?php echo I18N::translate('nexu’ database must be on the same server as PhpGedView’s'); ?>
 					</li>
 					<li>
 						<?php echo /* I18N: %s is a number */ I18N::translate('PhpGedView must be version 4.2.3, or any SVN up to #%s', I18N::digits(7101)); ?>
@@ -719,7 +719,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 				</p>
 				<p>
 					<a href="admin_pgv_to_wt.php">
-						<?php echo I18N::translate('Click here for PhpGedView to webtrees transfer wizard'); ?>
+						<?php echo I18N::translate('Click here for PhpGedView to nexu transfer wizard'); ?>
 					</a>
 				</p>
 			</div>
